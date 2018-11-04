@@ -8,8 +8,9 @@ zf:
   volumes:
    - .:/var/www
   links:
-    - database
-database:
+    - blog_database
+blog_database:
+    container_name: blog_database
     image: mysql
     volumes:
       - ./db:/var/lib/mysql
@@ -20,7 +21,7 @@ database:
 phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
-      - database:mysql
+      - blog_database
     environment:
       - MYSQL_USERNAME=root
       - MYSQL_ROOT_PASSWORD=123
