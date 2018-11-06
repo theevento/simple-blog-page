@@ -29,12 +29,11 @@ class UserAuthService implements UserAuthServiceInterface
         /* @var $adapter \Blog\Adapter\AuthAdapter */
         $adapter = $this->authenticationService->getAdapter();
         $adapter->setUserAuthEntity($userAuthEntity);
-        $result = $adapter->authenticate();
+        $result = $this->authenticationService->authenticate($adapter);
 
         if($result->getCode() !== Result::SUCCESS)
         {
             throw new \Exception($result->getMessages()[0]);
         }
-
     }
 }

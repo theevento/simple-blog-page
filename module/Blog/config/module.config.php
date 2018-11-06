@@ -40,7 +40,8 @@ return [
                         'controller' => Controller\LoginController::class,
                         'action' => 'index',
                     ]
-                ]
+                ],
+                'security' => true
             ]
         ],
     ],
@@ -87,6 +88,13 @@ return [
             UsersRepositoryInterface::class => UsersDoctrineRepository::class,
             UsersServiceInterface::class => UsersService::class,
             UserAuthServiceInterface::class => UserAuthService::class
+        ]
+    ],
+    'security' => [
+        'form' => 'login',
+        'form_redirect' => 'ta',
+        'area' => [
+            'home'
         ]
     ]
 ];
