@@ -1,0 +1,35 @@
+<?php
+/* @var $loginForm  \Blog\Form\LoginForm */
+$loginForm = $this->loginForm;
+$loginForm->prepare();
+
+$formLabel = $this->plugin('formLabel');
+
+?>
+<main class="main">
+    <div class="main__div">
+        <?php if(isset($this->authErrors)): ?>
+            <div class="bg-warning"><?=$this->translate($this->authErrors)?></div>
+        <?php endif; ?>
+        <?= $this->form()->openTag($loginForm) ?>
+        <div class="form-element">
+            <?= $formLabel->openTag() ?>
+            <?= $loginForm->get('login')->getOption('label') ?>
+            <?= $this->formInput($loginForm->get('login')) ?>
+            <div class="error"><?= $this->formElementErrors($loginForm->get('login')); ?></div>
+            <?= $formLabel->closeTag() ?>
+        </div>
+        <div class="form-element">
+            <?= $formLabel->openTag() ?>
+            <?= $loginForm->get('password')->getOption('label') ?>
+            <?= $this->formInput($loginForm->get('password')) ?>
+            <div class="error"><?= $this->formElementErrors($loginForm->get('password')); ?></div>
+            <?= $formLabel->closeTag() ?>
+        </div>
+        <div class="form-element">
+            <?= $loginForm->get('submit')->getOption('label') ?>
+            <?= $this->formInput($loginForm->get('submit')) ?>
+        </div>
+        <?= $this->form()->closeTag() ?>
+    </div>
+</main>

@@ -18,7 +18,11 @@
         "zfcampus/zf-development-mode": "^3.0",
         "zendframework/zend-expressive-authentication-session": "^1.0",
         "doctrine/doctrine-module": "^2.1",
-        "doctrine/doctrine-orm-module": "^2.1"
+        "doctrine/doctrine-orm-module": "^2.1",
+        "zendframework/zend-i18n": "^2.9",
+        "zendframework/zend-i18n-resources": "^2.6",
+        "zendframework/zend-session": "^2.8",
+        "zendframework/zend-crypt": "^3.3"
     },
     "autoload": {
         "psr-4": {
