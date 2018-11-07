@@ -1,0 +1,88 @@
+body, html
+{
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+}
+body{
+    display: flex;
+}
+.nav{
+    width: 10%;
+    height: 100vh;
+    background-color: #222d32;
+}
+.nav__ul
+{
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+.nav__ul__li > a
+{
+    display: block;
+    padding: 10px;
+    color: #ffffff;
+}
+.nav__ul__li > a:hover, .nav__ul__li > a:visited, .nav__ul__li > a:active
+{
+    color: #ffffff;
+    background: #1d272b;
+    text-decoration: none;
+}
+.main{
+    width: 90%;
+    background-color: #ecf0f5;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.box .box-group>.box {
+    margin-bottom: 5px;
+}
+.box.box-primary {
+    border-top-color: #3c8dbc;
+}
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+.box-header.with-border {
+    border-bottom: 1px solid #f4f4f4;
+}
+.box-header {
+    color: #444;
+    display: block;
+    padding: 10px;
+    position: relative;
+}
+.box-body {
+    border-radius: 0 0 3px 3px;
+    padding: 10px;
+}
+label {
+    width: 100%;
+}
+textarea{
+    resize: vertical;
+}
+.post-content
+{
+    height: 50vh !important;
+}
+.error ul
+{
+    list-style-type: none;
+    padding: 0;
+    color: #ac2925;
+    margin: 10px 0;
+}
+.bg-success
+{
+    padding: 10px;
+    margin-bottom: 5px;
+}

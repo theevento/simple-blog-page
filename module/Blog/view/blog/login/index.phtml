@@ -8,8 +8,8 @@ $formLabel = $this->plugin('formLabel');
 ?>
 <main class="main">
     <div class="main__div">
-        <?php if(isset($this->authErrors)): ?>
-            <div class="bg-warning"><?=$this->translate($this->authErrors)?></div>
+        <?php if (isset($this->authErrors)): ?>
+            <div class="bg-warning"><?= $this->translate($this->authErrors) ?></div>
         <?php endif; ?>
         <?= $this->form()->openTag($loginForm) ?>
         <div class="form-element">

@@ -36,10 +36,10 @@ class LoginController extends AbstractActionController
             $data = $request->getPost();
             $loginForm->setData($data);
             if ($loginForm->isValid()) {
-                try{
+                try {
                     $authenticationService->authenticate($data['login'], $data['password']);
                     $this->redirect()->toRoute('logged');
-                }catch (\Exception $exception) {
+                } catch (\Exception $exception) {
                     $viewModel->setVariable('authErrors', $exception->getMessage());
                 }
             } else {

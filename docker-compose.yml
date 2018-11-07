@@ -13,6 +13,8 @@ services:
        - .:/var/www
       links:
         - blog_database
+      networks:
+        - main
   blog_database:
       container_name: blog_database
       image: mysql:5.6
@@ -22,6 +24,10 @@ services:
        - MYSQL_USERNAME=root
        - MYSQL_ROOT_PASSWORD=123
        - MYSQL_DATABASE=blog
+      ports:
+       - "3306:3306"
+      networks:
+        - main
   phpmyadmin:
       container_name: phpmyadmin
       image: phpmyadmin/phpmyadmin
@@ -33,3 +39,7 @@ services:
         - PMA_ARBITRARY=1
       ports:
         - "127.0.0.34:80:80"
+      networks:
+        - main
+networks:
+  main:

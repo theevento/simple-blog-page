@@ -31,8 +31,7 @@ class UserAuthService implements UserAuthServiceInterface
         $adapter->setUserAuthEntity($userAuthEntity);
         $result = $this->authenticationService->authenticate($adapter);
 
-        if($result->getCode() !== Result::SUCCESS)
-        {
+        if ($result->getCode() !== Result::SUCCESS) {
             throw new \Exception($result->getMessages()[0]);
         }
     }

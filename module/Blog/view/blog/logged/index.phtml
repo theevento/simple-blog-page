@@ -1,0 +1,52 @@
+<div class="panel box box-primary">
+    <div class="box-header with-border">
+        <h4 class="box-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class="">
+                Wszystkie posty
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true" style="">
+        <div class="box-body">
+            <?php if (!isset($this->posts)): ?>
+                Brak dodany postów.
+            <?php else: ?>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tytuł</th>
+                        <th>Aktywny</th>
+                        <th>Akcje</th>
+                    </tr>
+                    </thead>
+                    <?php foreach ($this->posts as $key => $post): ?>
+                    <tbody>
+                    <?php if ($post->getActive() === true): ?>
+                        <tr class="active">
+                            <th><?= $key ?></th>
+                            <td><?= $post->getTitle() ?></td>
+                            <td>Tak</td>
+                            <td>
+                                <a class="btn btn-default"
+                                   href="<?= $this->url('logged', ['action' => 'edit', 'id' => $post->getId()]) ?>">Edytuj</a>
+                            </td>
+                        </tr>
+                    <?php else: ?>
+                        <tr class="danger">
+                            <th><?= $key ?></th>
+                            <td><?= $post->getTitle() ?></td>
+                            <td>Nie</td>
+                            <td>
+                                <a class="btn btn-default"
+                                   href="<?= $this->url('logged', ['action' => 'edit', 'id' => $post->getId()]) ?>">Edytuj</a>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

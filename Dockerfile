@@ -1,7 +1,7 @@
 FROM php:7.1-apache
 
 RUN apt-get update \
- && apt-get install -y git zlib1g-dev libicu-dev \
+ && apt-get install -y git zlib1g-dev libicu-dev iputils-ping \
  && docker-php-ext-configure intl \
  && docker-php-ext-install zip intl \
  && docker-php-ext-install pdo pdo_mysql \

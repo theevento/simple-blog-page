@@ -1,0 +1,57 @@
+<?php
+/* @var $postForm \Blog\Form\PostForm */
+$postForm = $this->postForm;
+$postForm->prepare();
+
+$formLabel = $this->plugin('formLabel');
+?>
+<div class="panel box box-primary">
+    <div class="box-header with-border">
+        <h4 class="box-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class="">
+                Dodaj nowy post
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true" style="">
+        <div class="box-body">
+            <?php if ($this->success === true): ?>
+                <div class="bg-success">Post został dodany pomyślnie!</div>
+            <?php endif; ?>
+            <?= $this->form()->openTag($postForm) ?>
+            <div class="form-element">
+                <?= $formLabel->openTag() ?>
+                <?= $postForm->get('title')->getOption('label') ?>
+                <?= $this->formInput($postForm->get('title')) ?>
+                <div class="error"><?= $this->formElementErrors($postForm->get('title')); ?></div>
+                <?= $formLabel->closeTag() ?>
+            </div>
+            <div class="form-element">
+                <?= $formLabel->openTag() ?>
+                <?= $postForm->get('description')->getOption('label') ?>
+                <?= $this->formTextarea($postForm->get('description')) ?>
+                <div class="error"><?= $this->formElementErrors($postForm->get('description')); ?></div>
+                <?= $formLabel->closeTag() ?>
+            </div>
+            <div class="form-element">
+                <?= $formLabel->openTag() ?>
+                <?= $postForm->get('content')->getOption('label') ?>
+                <?= $this->formTextarea($postForm->get('content')) ?>
+                <div class="error"><?= $this->formElementErrors($postForm->get('content')); ?></div>
+                <?= $formLabel->closeTag() ?>
+            </div>
+            <div class="form-element">
+                <?= $formLabel->openTag() ?>
+                <?= $postForm->get('active')->getOption('label') ?>
+                <?= $this->formSelect($postForm->get('active')) ?>
+                <div class="error"><?= $this->formElementErrors($postForm->get('active')); ?></div>
+                <?= $formLabel->closeTag() ?>
+            </div>
+            <div class="form-element">
+                <?= $postForm->get('submit')->getOption('label') ?>
+                <?= $this->formInput($postForm->get('submit')) ?>
+            </div>
+            <?= $this->form()->closeTag() ?>
+        </div>
+    </div>
+</div>

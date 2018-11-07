@@ -12,9 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
 class UserEntity
 {
     /**
+     * @var int
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(name="id")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -39,9 +40,9 @@ class UserEntity
     private $active;
 
     /**
-     * @ORM\OneToMany(targetEntity="ArticleEntity", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="PostEntity", mappedBy="user")
      */
-    private $article;
+    private $post;
 
 
     /**
@@ -49,7 +50,7 @@ class UserEntity
      */
     public function __construct()
     {
-        $this->article = new ArrayCollection();
+        $this->post = new ArrayCollection();
     }
 
     /**
@@ -111,17 +112,17 @@ class UserEntity
     /**
      * @return mixed
      */
-    public function getArticle()
+    public function getPost()
     {
-        return $this->article;
+        return $this->post;
     }
 
     /**
-     * @param ArticleEntity $article
+     * @param PostEntity $article
      */
-    public function addArticle(ArticleEntity $article): void
+    public function setPost(PostEntity $article): void
     {
-        $this->article[] = $article;
+        $this->post[] = $article;
     }
 
     /**

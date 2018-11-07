@@ -4,11 +4,19 @@ namespace Blog;
 
 use Blog\Adapter\AuthAdapter;
 use Blog\Adapter\Factory\AuthAdapterFactory;
+use Blog\Controller\Factory\LoggedControllerFactory;
 use Blog\Controller\Factory\LoginControllerFactory;
+use Blog\Controller\LoggedController;
+use Blog\Repository\PostRepository\Factory\PostDoctrineRepositoryFactory;
+use Blog\Repository\PostRepository\PostDoctrineRepository;
+use Blog\Repository\PostRepository\PostRepositoryInterface;
 use Blog\Repository\UsersRepository\Factory\UsersDoctrineRepositoryFactory;
 use Blog\Repository\UsersRepository\UsersDoctrineRepository;
 use Blog\Repository\UsersRepository\UsersRepositoryInterface;
 use Blog\Service\AuthenticationService\Factory\AuthenticationServiceFactory;
+use Blog\Service\PostService\Factory\PostServiceFactory;
+use Blog\Service\PostService\PostService;
+use Blog\Service\PostService\PostServiceInterface;
 use Blog\Service\UserAuthService\Factory\UserAuthServiceFactory;
 use Blog\Service\UserAuthService\UserAuthService;
 use Blog\Service\UserAuthService\UserAuthServiceInterface;
@@ -17,6 +25,7 @@ use Blog\Service\UsersService\UsersService;
 use Blog\Service\UsersService\UsersServiceInterface;
 use Zend\Authentication\AuthenticationService;
 use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -41,14 +50,28 @@ return [
                         'action' => 'index',
                     ]
                 ],
-                'security' => true
-            ]
+            ],
+            'logged' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/logged[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ],
+                    'defaults' => [
+                        'controller' => Controller\LoggedController::class,
+                        'action' => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
-            Controller\LoginController::class => LoginControllerFactory::class
+            Controller\LoginController::class => LoginControllerFactory::class,
+            Controller\LoggedController::class => LoggedControllerFactory::class
         ],
     ],
     'view_manager' => [
@@ -82,19 +105,42 @@ return [
             UsersService::class => UsersServiceFactory::class,
             AuthenticationService::class => AuthenticationServiceFactory::class,
             AuthAdapter::class => AuthAdapterFactory::class,
-            UserAuthService::class => UserAuthServiceFactory::class
+            UserAuthService::class => UserAuthServiceFactory::class,
+            PostService::class => PostServiceFactory::class,
+            PostDoctrineRepository::class => PostDoctrineRepositoryFactory::class
         ],
         'aliases' => [
             UsersRepositoryInterface::class => UsersDoctrineRepository::class,
             UsersServiceInterface::class => UsersService::class,
-            UserAuthServiceInterface::class => UserAuthService::class
+            UserAuthServiceInterface::class => UserAuthService::class,
+            PostRepositoryInterface::class => PostDoctrineRepository::class,
+            PostServiceInterface::class => PostService::class
         ]
     ],
     'security' => [
         'form' => 'login',
-        'form_redirect' => 'ta',
+        'form_redirect' => 'logged',
         'area' => [
-            'home'
+            'logged'
         ]
-    ]
+    ],
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Dashboard',
+                'route' => 'logged',
+            ],
+            [
+                'label' => 'Dodaj post',
+                'route' => 'logged',
+                'params' => [
+                    'action' => 'add'
+                ]
+            ],
+            [
+                'label' => 'Wyjdź',
+                'route' => 'home',
+            ]
+        ],
+    ],
 ];

@@ -29,7 +29,7 @@ class Module
     public function checkSecurity(MvcEvent $event)
     {
         /* @var $controller \Zend\Mvc\Controller\AbstractActionController */
-        $controller = get_class($event->getController());
+        $controller = $event->getTarget();
         $serviceManager = $event->getApplication()->getServiceManager();
         $authService = $serviceManager->get(AuthenticationService::class);
         $auth = $authService->hasIdentity();
@@ -39,14 +39,12 @@ class Module
         $formRedirect = $securityConfig['form_redirect'];
         $securityArea = $securityConfig['area'];
 
-        if(in_array($routeName, $securityArea) && $auth === false)
-        {
-            $controller->redirect()->toRoute($loginForm);
+        if (in_array($routeName, $securityArea) && $auth === false) {
+            return $controller->redirect()->toRoute($loginForm);
         }
 
-        if($auth === true && $routeName === $loginForm)
-        {
-            $controller->redirect()->toRoute($formRedirect);
+        if ($auth === true && $routeName === $loginForm) {
+            return $controller->redirect()->toRoute($formRedirect);
         }
     }
 }

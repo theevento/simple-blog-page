@@ -7,19 +7,20 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="articles")
+ * @ORM\Table(name="posts")
  */
-class ArticleEntity
+class PostEntity
 {
     /**
+     * @var int
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(name="id")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserEntity", inversedBy="article")
+     * @ORM\ManyToOne(targetEntity="UserEntity", inversedBy="post")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
@@ -48,6 +49,11 @@ class ArticleEntity
      * @ORM\Column(name="active", type="boolean", nullable=false)
      */
     private $active;
+
+    public function __construct()
+    {
+        $this->createdDate = time();
+    }
 
     /**
      * @return mixed

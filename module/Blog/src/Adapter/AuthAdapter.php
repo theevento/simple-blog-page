@@ -54,8 +54,7 @@ class AuthAdapter implements AdapterInterface
             );
         }
 
-        if(!$bcrypt->verify($userAuthEntity->getPassword(), $user->getPassword()))
-        {
+        if (!$bcrypt->verify($userAuthEntity->getPassword(), $user->getPassword())) {
             return new Result(
                 Result::FAILURE_IDENTITY_NOT_FOUND,
                 null,
