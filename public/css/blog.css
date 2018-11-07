@@ -1,0 +1,31 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+.main{
+    width: 50%;
+    text-align: center;
+}
+.main__a, .main__a:hover, .main__a:visited, .main__a:active
+{
+    display: block;
+    color: black;
+}
+.main__a
+{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c0c0c0;
+}
+.nav
+{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #9d9d9d;
+}
+.nav__a
+{
+    font-size: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

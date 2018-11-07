@@ -49,4 +49,10 @@ class LoginController extends AbstractActionController
 
         return $viewModel;
     }
+
+    public function logoutAction()
+    {
+        $this->authenticationService->logout();
+        return $this->redirect()->toRoute('login');
+    }
 }

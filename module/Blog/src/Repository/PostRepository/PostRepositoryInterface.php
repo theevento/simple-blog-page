@@ -15,4 +15,8 @@ interface PostRepositoryInterface
     public function findPostByCurrentUser($id);
 
     public function findPostByCurrentUserAndId($id, $userId);
+
+    public function findPostByActive();
+
+    public function findPostById($id);
 }

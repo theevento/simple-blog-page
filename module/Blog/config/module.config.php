@@ -4,6 +4,7 @@ namespace Blog;
 
 use Blog\Adapter\AuthAdapter;
 use Blog\Adapter\Factory\AuthAdapterFactory;
+use Blog\Controller\Factory\IndexControllerFactory;
 use Blog\Controller\Factory\LoggedControllerFactory;
 use Blog\Controller\Factory\LoginControllerFactory;
 use Blog\Controller\LoggedController;
@@ -34,10 +35,20 @@ return [
             'home' => [
                 'type' => Literal::class,
                 'options' => [
-                    'route' => '/',
+                    'route' => '/blog',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action' => 'index',
+                    ],
+                ],
+            ],
+            'post' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route' => '/blog/[:id]',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action' => 'post',
                     ],
                 ],
             ],
@@ -48,6 +59,16 @@ return [
                     'defaults' => [
                         'controller' => Controller\LoginController::class,
                         'action' => 'index',
+                    ]
+                ],
+            ],
+            'logout' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/logout',
+                    'defaults' => [
+                        'controller' => Controller\LoginController::class,
+                        'action' => 'logout',
                     ]
                 ],
             ],
@@ -69,7 +90,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+            Controller\IndexController::class => IndexControllerFactory::class,
             Controller\LoginController::class => LoginControllerFactory::class,
             Controller\LoggedController::class => LoggedControllerFactory::class
         ],
@@ -136,6 +157,10 @@ return [
                 'params' => [
                     'action' => 'add'
                 ]
+            ],
+            [
+                'label' => 'Wyloguj',
+                'route' => 'logout',
             ],
             [
                 'label' => 'Wyjdź',

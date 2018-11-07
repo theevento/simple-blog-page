@@ -1,1 +1,37 @@
-<?= $this->content ?>
+<?php
+$this->navigation('default')->menu()->setPartial('partials/menu');
+?>
+<?= $this->doctype() ?>
+
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <?= $this->headTitle('Blog')
+        ->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?= $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <?= $this->headLink()
+        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+        ->prependStylesheet($this->basePath('css/blog.css'))
+    ?>
+
+    <?= $this->headScript()
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
+    ?>
+</head>
+<body>
+<main class="main">
+    <nav class="nav">
+        <a class="nav__a" href="<?=$this->url('home')?>">Strona główna</a>
+        <a class="nav__a" href="<?=$this->url('login')?>">Zaloguj</a>
+    </nav>
+    <?= $this->content ?>
+</main>
+</body>
+</html>

@@ -35,4 +35,9 @@ class UserAuthService implements UserAuthServiceInterface
             throw new \Exception($result->getMessages()[0]);
         }
     }
+
+    public function logout()
+    {
+        $this->authenticationService->clearIdentity();
+    }
 }

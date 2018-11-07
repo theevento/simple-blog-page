@@ -31,9 +31,31 @@ class PostDoctrineRepository implements PostDoctrineRepositoryInterface
 
     public function findPostByCurrentUser($id)
     {
+        return $this->entityManager->getRepository(PostEntity::class)->findBy(
+            [
+                'user' => $id
+            ],
+            [
+                'createdDate' => 'DESC'
+            ]);
+    }
+
+    public function findPostByActive()
+    {
+        return $this->entityManager->getRepository(PostEntity::class)->findBy(
+            [
+                'active' => true
+            ],
+            [
+                'createdDate' => 'DESC'
+            ]);
+    }
+
+    public function findPostById($id)
+    {
         return $this->entityManager->getRepository(PostEntity::class)->findBy([
-            'user' => $id
-        ]);
+            'id' => $id
+        ])[0];
     }
 
     public function createOrUpdatePost(PostEntity $postEntity): void

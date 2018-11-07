@@ -33,6 +33,16 @@ class PostService implements PostServiceInterface
         $this->userRepository = $userRepository;
     }
 
+    public function findPostByActive()
+    {
+        return $this->postRepository->findPostByActive();
+    }
+
+    public function findPostById($id)
+    {
+        return $this->postRepository->findPostById($id);
+    }
+
     public function findPostByCurrentUserAndId($id)
     {
         $userId = $this->authenticationService->getIdentity();

@@ -15,4 +15,8 @@ interface PostServiceInterface
     public function findPostByCurrentUser();
 
     public function findPostByCurrentUserAndId($id);
+
+    public function findPostByActive();
+
+    public function findPostById($id);
 }
