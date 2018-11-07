@@ -25,7 +25,7 @@
                     <tbody>
                     <?php if ($post->getActive() === true): ?>
                         <tr class="active">
-                            <th><?= $key ?></th>
+                            <th><?= $key+1 ?></th>
                             <td><?= $post->getTitle() ?></td>
                             <td><?= date('m/d/Y H:i:s', $post->getCreatedDate()) ?></td>
                             <td>Tak</td>
@@ -36,7 +36,7 @@
                         </tr>
                     <?php else: ?>
                         <tr class="danger">
-                            <th><?= $key ?></th>
+                            <th><?= $key+1 ?></th>
                             <td><?= $post->getTitle() ?></td>
                             <td><?= date('m/d/Y H:i:s', $post->getCreatedDate()) ?></td>
                             <td>Nie</td>

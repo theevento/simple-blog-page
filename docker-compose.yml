@@ -18,12 +18,12 @@ services:
   blog_database:
       container_name: blog_database
       image: mysql:5.6
-      volumes:
-        - ./db:/var/lib/mysql
       environment:
        - MYSQL_USERNAME=root
        - MYSQL_ROOT_PASSWORD=123
        - MYSQL_DATABASE=blog
+      volumes:
+        - ./schema:/docker-entrypoint-initdb.d
       ports:
        - "3306:3306"
       networks:
