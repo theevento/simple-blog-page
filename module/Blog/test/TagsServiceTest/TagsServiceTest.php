@@ -8,7 +8,8 @@ use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 class TagsServiceTest extends AbstractHttpControllerTestCase
 {
-    public function testTagsInContentWillBeChangeToExpectedData(){
+    public function testTagsInContentWillBeChangeToExpectedData()
+    {
         $tagsService = new TagsService();
         $postTitle = 'Example Title';
         $tag = '{POST_TITLE}';
@@ -16,7 +17,7 @@ class TagsServiceTest extends AbstractHttpControllerTestCase
         $expectedContent = 'This is example post with Example Title title';
 
         $result = $tagsService->convert([
-           $tag => $postTitle
+            $tag => $postTitle
         ], $content);
 
         $this->assertSame($expectedContent, $result);

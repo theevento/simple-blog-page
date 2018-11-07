@@ -34,8 +34,7 @@ class IndexController extends AbstractActionController
         $id = $this->params()->fromRoute('id', null);
         $post = $this->postService->findPostById($id);
 
-        if($post === null)
-        {
+        if ($post === null) {
             return $this->notFoundAction();
         }
 
