@@ -5,12 +5,12 @@ $post = $this->post;
 $tagsService = $this->tagsService;
 ?>
 <article class="main__a__div">
-    <h2 class="main__a__div__h2"><?= $post->getTitle() ?></h2>
+    <h2 class="main__a__div__h2"><?= $this->escapeHtml($post->getTitle()) ?></h2>
     <div class="main__a__div__div">
-        <div class="author">Opublikowane przez <?= $post->getUser()->getName() ?> </div>
+        <div class="author">Opublikowane przez <?= $this->escapeHtml($post->getUser()->getName()) ?> </div>
         <?=
         $tagsService->convert([
-            '{POST_TITLE}' => $post->getTitle()
+            '{POST_TITLE}' => $this->escapeHtml($post->getTitle())
         ], $post->getContent())
         ?>
     </div>

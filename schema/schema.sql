@@ -43,7 +43,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `title`, `description`, `content`, `created_date`, `active`) VALUES
-(1, 1, 'Pierwszy post na stronie', 'Oto TwÃ³j pierwszy post na stronie, moÅ¼esz go edytowaÄ‡ w panelu administratora', 'Witaj,\r\nOto TwÃ³j pierwszy post pt. \"{POST_TITLE}\", moÅ¼esz edytowaÄ‡ jego treÅ›Ä‡ w panelu administracyjnym!', 1541617170, 1);
+(1, 1, 'Pierwszy post na stronie', 'Oto TwÃ³j pierwszy post na stronie, moÅ¼esz go edytowaÄ‡ w panelu administratora', 'Witaj,\r\nOto TwÃ³j pierwszy post pt. \"{POST_TITLE}\", moÅ¼esz edytowaÄ‡ jego treÅ›Ä‡ w panelu administracyjnym!', UNIX_TIMESTAMP(), 1);
 
 -- --------------------------------------------------------
 

@@ -32,3 +32,13 @@ Username: admin
 Password: 123
 ```
 And that's it!
+## Unit tests
+Run PHPUnit tests via docker container:
+```bash
+$ docker-compose run www ./vendor/bin/phpunit
+```
+## Database
+You don't need to import database manually because it's was maked when you build your docker image, but if you want change something you can find database file right there:
+```text
+schema/schema.sql
+```
