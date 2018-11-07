@@ -18,6 +18,10 @@ Build image via docker:
 ```bash
 $ docker-compose up -d --build
 ```
+Download vendor via composer:
+```bash
+$ docker-compose run www composer install
+```
 Main page:
 ```text
 http://127.0.0.33/blog
