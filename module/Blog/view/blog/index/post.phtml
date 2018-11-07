@@ -1,9 +1,16 @@
 <?php
+//TODO: escapeHTML do dodania
 $post = $this->post;
+/* @var $tagsService \Blog\Service\TagsService\TagsServiceInterface */
+$tagsService = $this->tagsService;
 ?>
 <article class="main__a__div">
-    <h2 class="main__a__div__h2"><?=$post->getTitle()?></h2>
+    <h2 class="main__a__div__h2"><?= $post->getTitle() ?></h2>
     <div class="main__a__div__div">
-        <?=$post->getDescription()?>
+        <?=
+        $tagsService->convert([
+            '{POST_TITLE}' => $post->getTitle()
+        ], $post->getContent())
+        ?>
     </div>
 </article>

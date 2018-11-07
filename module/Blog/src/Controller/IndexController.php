@@ -3,6 +3,7 @@
 namespace Blog\Controller;
 
 use Blog\Service\PostService\PostServiceInterface;
+use Blog\Service\TagsService\TagsServiceInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -10,11 +11,13 @@ class IndexController extends AbstractActionController
 {
     private $postService;
     private $viewModel;
+    private $tagsService;
 
-    public function __construct(PostServiceInterface $postService, ViewModel $viewModel)
+    public function __construct(PostServiceInterface $postService, ViewModel $viewModel, TagsServiceInterface $tagsService)
     {
         $this->postService = $postService;
         $this->viewModel = $viewModel;
+        $this->tagsService = $tagsService;
     }
 
     public function indexAction()
@@ -36,6 +39,7 @@ class IndexController extends AbstractActionController
             return $this->notFoundAction();
         }
 
+        $viewModel->setVariable('tagsService', $this->tagsService);
         $viewModel->setVariable('post', $post);
         return $viewModel;
     }

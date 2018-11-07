@@ -18,6 +18,9 @@ use Blog\Service\AuthenticationService\Factory\AuthenticationServiceFactory;
 use Blog\Service\PostService\Factory\PostServiceFactory;
 use Blog\Service\PostService\PostService;
 use Blog\Service\PostService\PostServiceInterface;
+use Blog\Service\TagsService\Factory\TagsServiceFactory;
+use Blog\Service\TagsService\TagsService;
+use Blog\Service\TagsService\TagsServiceInterface;
 use Blog\Service\UserAuthService\Factory\UserAuthServiceFactory;
 use Blog\Service\UserAuthService\UserAuthService;
 use Blog\Service\UserAuthService\UserAuthServiceInterface;
@@ -128,14 +131,16 @@ return [
             AuthAdapter::class => AuthAdapterFactory::class,
             UserAuthService::class => UserAuthServiceFactory::class,
             PostService::class => PostServiceFactory::class,
-            PostDoctrineRepository::class => PostDoctrineRepositoryFactory::class
+            PostDoctrineRepository::class => PostDoctrineRepositoryFactory::class,
+            TagsService::class => TagsServiceFactory::class
         ],
         'aliases' => [
             UsersRepositoryInterface::class => UsersDoctrineRepository::class,
             UsersServiceInterface::class => UsersService::class,
             UserAuthServiceInterface::class => UserAuthService::class,
             PostRepositoryInterface::class => PostDoctrineRepository::class,
-            PostServiceInterface::class => PostService::class
+            PostServiceInterface::class => PostService::class,
+            TagsServiceInterface::class => TagsService::class
         ]
     ],
     'security' => [

@@ -16,6 +16,7 @@
                     <tr>
                         <th>#</th>
                         <th>Tytuł</th>
+                        <th>Data utworzenia</th>
                         <th>Aktywny</th>
                         <th>Akcje</th>
                     </tr>
@@ -26,6 +27,7 @@
                         <tr class="active">
                             <th><?= $key ?></th>
                             <td><?= $post->getTitle() ?></td>
+                            <td><?= date('m/d/Y H:i:s', $post->getCreatedDate()) ?></td>
                             <td>Tak</td>
                             <td>
                                 <a class="btn btn-default"
@@ -36,6 +38,7 @@
                         <tr class="danger">
                             <th><?= $key ?></th>
                             <td><?= $post->getTitle() ?></td>
+                            <td><?= date('m/d/Y H:i:s', $post->getCreatedDate()) ?></td>
                             <td>Nie</td>
                             <td>
                                 <a class="btn btn-default"

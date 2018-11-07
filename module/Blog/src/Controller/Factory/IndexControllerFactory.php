@@ -6,6 +6,7 @@ namespace Blog\Controller\Factory;
 
 use Blog\Controller\IndexController;
 use Blog\Service\PostService\PostServiceInterface;
+use Blog\Service\TagsService\TagsServiceInterface;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\View\Model\ViewModel;
@@ -16,7 +17,8 @@ class IndexControllerFactory implements FactoryInterface
     {
         return new IndexController(
             $container->get(PostServiceInterface::class),
-            new ViewModel()
+            new ViewModel(),
+            $container->get(TagsServiceInterface::class)
         );
     }
 }

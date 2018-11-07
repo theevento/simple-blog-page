@@ -1,6 +1,7 @@
 <?php
 /* @var $postForm \Blog\Form\PostForm */
 $postForm = $this->postForm;
+$postForm->get('submit')->setValue('Aktualizuj post');
 $postForm->prepare();
 
 $formLabel = $this->plugin('formLabel');
