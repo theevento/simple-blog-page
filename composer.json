@@ -33,7 +33,6 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ApplicationTest\\": "module/Application/test/",
             "BlogTest\\": "module/Blog/test/"
         }
     },
@@ -49,5 +48,8 @@
         ],
         "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
         "test": "phpunit"
+    },
+    "require-dev": {
+        "zendframework/zend-test": "^3.2"
     }
 }
