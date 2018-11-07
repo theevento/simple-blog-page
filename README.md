@@ -22,6 +22,10 @@ Download vendor via composer:
 ```bash
 $ docker-compose run www composer install
 ```
+Set development mode:
+```bash
+$ docker-compose run www composer development-enable 
+```
 Main page:
 ```text
 http://127.0.0.33/blog
